@@ -1,112 +1,71 @@
-class Emp
+package emp.assignment;
+import java.util.Scanner;
+abstract class Emp
 {
-	int age;
 	String name;
-	Emp(String name, int age)
-	{
-		this.name=name;
-		this.age=age;
-	}
-	void display()
-	{
-		System.out.println("Name: "+name);
-		System.out.println("Age: "+age);
-
-	}
-	void raiseSalary()
-	{}
-}
-class Tester extends Emp
-{
 	int age;
-	String name;
 	int salary;
-	String des;
-	Tester(String name, int age)
+	String designation;
+	int count = 0;
+	Scanner sc = new Scanner(System.in);
+	Emp()
 	{
-		super(name, age);
-		this.name=name;
-		this.age=age;
-		this.salary=15000;
-		this.des="TESTER";
-	}
-	void display()
-	{
-		System.out.println("Name: "+name);
-		System.out.println("Age: "+age);
-		System.out.println("Salary: "+salary);
-		System.out.println("Designation: "+des+"\n");
-	}
-	void raiseSalary()
-	{
-		salary+=2000;
+		count++;
+		System.out.println("Enter name: ");
+		name = sc.next();
+		System.out.println("Enter age: ");
+		age = sc.nextInt();
 
+	}
+	public void raiseSalary()
+	{
+		System.out.println("Enter increment amount: ");
+		int inc = sc.nextInt();
+		salary += inc;
+	}
+	public final void display()
+	{
+		System.out.println("Name : "+name);
+		System.out.println("Age : "+age);
+		System.out.println("Salary : "+salary);
+		System.out.println("Designation : "+designation+"\n");
 	}
 }
-
-class Programmer extends Emp
+final class Tester extends Emp
 {
-	int age;
-	String name;
-	int salary;
-	String des;
-	Programmer(String name, int age)
+	Tester()
 	{
-		super(name, age);
-		this.name=name;
-		this.age=age;
-		this.salary=30000;
-		this.des="PROGRAMMER";
-	}
-	void display()
-	{
-		System.out.println("Name: "+name);
-		System.out.println("Age: "+age);
-		System.out.println("Salary: "+salary);
-		System.out.println("Designation: "+des+"\n");
-	}
-	void raiseSalary()
-	{
-		salary+=5000;
-
+		super();
+		salary = 15000;
+		designation = "Tester";
 	}
 }
-
-class Manager extends Emp
+final class Programmer extends Emp
 {
-	int age;
-	String name;
-	int salary;
-	String des;
-	Manager(String name, int age)
+	Programmer()
 	{
-		super(name, age);
-		this.name=name;
-		this.age=age;
-		this.salary=90000;
-		this.des="TESTER";
-	}
-	void display()
-	{
-		System.out.println("Name: "+name);
-		System.out.println("Age: "+age);
-		System.out.println("Salary: "+salary);
-		System.out.println("Designation: "+des+"\n");
-	}
-	void raiseSalary()
-	{
-		salary+=10000;
-
+		super();
+		salary = 30000;
+		designation = "Programmer";
 	}
 }
+final class Manager extends Emp
+{
+	Manager()
+	{
+		super();
+		salary = 90000;
+		designation = "Manager";
+	}
 
-class Employee
+}
+public class Employee
 {
 	public static void main(String args[])
 	{
-		Emp e1=new Tester("Ravi",25);
-		Emp e2=new Programmer("Prashant",33);
-		Emp e3=new Manager("Mamta",45);
+		Emp e1 = new Tester();
+		Emp e2 = new Programmer();
+		Emp e3 = new Manager();
 
 		e1.display();
 		e2.display();
@@ -115,9 +74,10 @@ class Employee
 		e1.raiseSalary();
 		e2.raiseSalary();
 		e3.raiseSalary();
-
+	
 		e1.display();
 		e2.display();
-		e3.display();
+		e3.display();	
+
 	}
 }
